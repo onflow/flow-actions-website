@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flow Actions Marketplace</title>
+    <link rel="icon" type="image/svg+xml" href="flow-icon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="flow-icon.svg" alt="Flow" class="logo-icon">
+                    <h1>Flow Actions</h1>
+                </div>
+                <div class="nav-links">
+                    <a href="#marketplace">Marketplace</a>
+                    <a href="https://github.com/onflow/FlowActions" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="#about">About</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>Flow Actions Marketplace</h2>
+                <p class="subtitle">Discover composable DeFi primitives for building sophisticated financial workflows on Flow blockchain</p>
+                <p class="description">Automatically updated directory of Flow Actions with development tools, productivity connectors, and integrations.</p>
+            </div>
+        </section>
+
+        <section class="how-it-works">
+            <div class="container">
+                <h3>How does this work?</h3>
+                <p>This marketplace automatically fetches the latest Flow Actions from the <a href="https://github.com/onflow/FlowActions" target="_blank" rel="noopener noreferrer">FlowActions repository</a> on GitHub. Each action is a composable DeFi primitive that can be used to build sophisticated financial workflows.</p>
+            </div>
+        </section>
+
+        <section id="marketplace" class="marketplace">
+            <div class="container">
+                <div class="marketplace-header">
+                    <h3>Available Actions</h3>
+                    <div class="loading" id="loading">
+                        <span>Loading actions from GitHub...</span>
+                    </div>
+                </div>
+                <div class="actions-grid" id="actions-grid">
+                    <!-- Actions will be dynamically inserted here -->
+                </div>
+                <div class="error-message" id="error-message" style="display: none;">
+                    <p>Failed to load actions. Please try refreshing the page.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h3>About Flow Actions</h3>
+                <p>Flow Actions provides a set of standardized interfaces that act as "money LEGOs" for the Flow ecosystem. The framework abstracts away protocol-specific complexities, allowing developers to focus on building sophisticated DeFi strategies.</p>
+                <div class="resources">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="https://github.com/onflow/FlowActions" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+                        <li><a href="https://github.com/onflow/FlowActions/blob/main/README.md" target="_blank" rel="noopener noreferrer">Documentation</a></li>
+                        <li><a href="https://docs.onflow.org" target="_blank" rel="noopener noreferrer">Flow Documentation</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Built for the Flow community</p>
+            <p class="disclaimer">Data is fetched directly from <a href="https://github.com/onflow/FlowActions" target="_blank" rel="noopener noreferrer">GitHub</a> on each page load</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
