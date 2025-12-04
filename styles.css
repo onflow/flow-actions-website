@@ -16,6 +16,16 @@
     --border-color: #1a1a1a;
     --success: #10b981;
     --error: #ef4444;
+    
+    /* Flow.com accent colors */
+    --accent-blue: #3334F8;
+    --accent-blue-light: #99BBFF;
+    --accent-aqua: #37DDDF;
+    --accent-aqua-light: #9DF1F2;
+    --accent-pink: #F4C6FA;
+    --accent-pink-dark: #6D3974;
+    --accent-purple: #823EE4;
+    --accent-purple-dark: #50268C;
 }
 
 body {
@@ -83,12 +93,44 @@ nav {
     text-decoration: none;
     font-weight: 400;
     font-size: 0.95rem;
-    transition: color 0.2s;
+    transition: all 0.2s;
     letter-spacing: -0.01em;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-blue));
+    transition: width 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: var(--primary-color);
+    color: var(--accent-aqua);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a:nth-child(2):hover {
+    color: var(--accent-blue-light);
+}
+
+.nav-links a:nth-child(2)::after {
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+}
+
+.nav-links a:nth-child(3):hover {
+    color: var(--accent-purple);
+}
+
+.nav-links a:nth-child(3)::after {
+    background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink));
 }
 
 main {
@@ -104,14 +146,37 @@ main {
 .hero {
     padding: 6rem 0 4rem;
     text-align: left;
-    background: var(--background);
+    background: linear-gradient(135deg, var(--background) 0%, #0a0a0a 50%, var(--background) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(0, 239, 139, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(51, 52, 248, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 80%, rgba(130, 62, 228, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 1;
 }
 
 .hero h2 {
     font-size: 4rem;
     font-weight: 800;
     margin-bottom: 1.5rem;
-    color: var(--text-primary);
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary-color) 30%, var(--accent-aqua) 60%, var(--accent-blue-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     letter-spacing: -0.03em;
     line-height: 1.1;
 }
@@ -134,7 +199,24 @@ main {
 
 .how-it-works {
     padding: 4rem 0;
-    background-color: var(--background);
+    background: linear-gradient(180deg, var(--background) 0%, #0a0a0a 100%);
+    position: relative;
+}
+
+.how-it-works::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(130, 62, 228, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.how-it-works .container {
+    position: relative;
+    z-index: 1;
 }
 
 .how-it-works h3 {
@@ -153,17 +235,37 @@ main {
 }
 
 .how-it-works a {
-    color: var(--primary-color);
+    color: var(--accent-aqua);
     text-decoration: none;
+    transition: color 0.2s;
 }
 
 .how-it-works a:hover {
+    color: var(--accent-blue-light);
     text-decoration: underline;
 }
 
 .marketplace {
     padding: 5rem 0;
     background-color: var(--background);
+    position: relative;
+}
+
+.marketplace::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 10% 20%, rgba(51, 52, 248, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(130, 62, 228, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.marketplace .container {
+    position: relative;
+    z-index: 1;
 }
 
 .marketplace-header {
@@ -235,19 +337,46 @@ main {
     transition: all 0.2s;
     font-family: inherit;
     letter-spacing: -0.01em;
+    position: relative;
+    overflow: hidden;
+}
+
+.filter-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 239, 139, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.filter-btn:hover::before {
+    left: 100%;
 }
 
 .filter-btn:hover {
-    border-color: var(--primary-color);
+    border-color: var(--accent-blue);
     color: var(--text-primary);
     background-color: var(--surface-hover);
+    box-shadow: 0 0 12px rgba(51, 52, 248, 0.3);
 }
 
 .filter-btn.active {
-    background-color: var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-aqua));
     border-color: var(--primary-color);
     color: var(--background);
     font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 239, 139, 0.4);
+}
+
+.filter-btn:nth-child(2n).active {
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-blue-light));
+}
+
+.filter-btn:nth-child(3n).active {
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
 }
 
 .loading {
@@ -284,13 +413,31 @@ main {
     cursor: pointer;
     min-height: 0;
     overflow: hidden;
+    position: relative;
+}
+
+.action-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-blue), var(--accent-purple));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.action-card:hover::before {
+    opacity: 1;
 }
 
 .action-card:hover {
     background-color: var(--surface-hover);
     border-color: var(--border-color);
     transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(0, 239, 139, 0.15);
+    box-shadow: 0 12px 40px rgba(0, 239, 139, 0.15),
+                0 0 0 1px rgba(0, 239, 139, 0.1);
 }
 
 .action-card-header {
@@ -323,7 +470,7 @@ main {
 }
 
 .action-type {
-    background-color: var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-aqua));
     color: var(--background);
     padding: 0.35rem 0.85rem;
     border-radius: 8px;
@@ -333,6 +480,7 @@ main {
     flex-shrink: 0;
     white-space: nowrap;
     letter-spacing: 0.05em;
+    box-shadow: 0 2px 8px rgba(0, 239, 139, 0.3);
 }
 
 .action-description {
@@ -360,16 +508,27 @@ main {
 }
 
 .action-tag {
-    background-color: var(--background);
+    background: linear-gradient(135deg, rgba(0, 239, 139, 0.1), rgba(51, 52, 248, 0.1));
     color: var(--text-secondary);
     padding: 0.25rem 0.5rem;
     border-radius: 4px;
     font-size: 0.75rem;
-    border: 1px solid var(--border-color);
+    border: 1px solid rgba(0, 239, 139, 0.2);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 100%;
+    transition: all 0.2s;
+}
+
+.action-tag:nth-child(2n) {
+    background: linear-gradient(135deg, rgba(51, 52, 248, 0.1), rgba(130, 62, 228, 0.1));
+    border-color: rgba(51, 52, 248, 0.2);
+}
+
+.action-tag:nth-child(3n) {
+    background: linear-gradient(135deg, rgba(130, 62, 228, 0.1), rgba(244, 198, 250, 0.1));
+    border-color: rgba(130, 62, 228, 0.2);
 }
 
 .action-footer {
@@ -389,11 +548,23 @@ main {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    transition: color 0.2s;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.action-link::after {
+    content: '→';
+    transition: transform 0.2s, color 0.2s;
+    color: var(--accent-blue-light);
 }
 
 .action-link:hover {
-    color: var(--primary-dark);
+    color: var(--accent-aqua);
+}
+
+.action-link:hover::after {
+    transform: translateX(4px);
+    color: var(--accent-purple);
 }
 
 .action-link::after {
@@ -460,15 +631,33 @@ main {
 }
 
 .resources li a {
-    color: var(--primary-color);
+    color: var(--accent-aqua);
     text-decoration: none;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    transition: color 0.2s;
 }
 
 .resources li a:hover {
+    color: var(--accent-blue-light);
     text-decoration: underline;
+}
+
+.resources li:nth-child(2) a {
+    color: var(--accent-blue-light);
+}
+
+.resources li:nth-child(2) a:hover {
+    color: var(--accent-purple);
+}
+
+.resources li:nth-child(3) a {
+    color: var(--accent-purple);
+}
+
+.resources li:nth-child(3) a:hover {
+    color: var(--accent-pink);
 }
 
 footer {
@@ -491,11 +680,13 @@ footer .disclaimer {
 }
 
 footer a {
-    color: var(--primary-color);
+    color: var(--accent-aqua);
     text-decoration: none;
+    transition: color 0.2s;
 }
 
 footer a:hover {
+    color: var(--accent-blue-light);
     text-decoration: underline;
 }
 
