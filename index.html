@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -31,15 +31,8 @@
         <section class="hero">
             <div class="container">
                 <h2>Flow Actions Marketplace</h2>
-                <p class="subtitle">Discover composable DeFi primitives for building sophisticated financial workflows on Flow blockchain</p>
+                <p class="subtitle">Discover composable DeFi primitives for building sophisticated financial workflows on Flow blockchain.</p>
                 <p class="description">Automatically updated directory of Flow Actions with development tools, productivity connectors, and integrations.</p>
-            </div>
-        </section>
-
-        <section class="how-it-works">
-            <div class="container">
-                <h3>How does this work?</h3>
-                <p>This marketplace automatically fetches the latest Flow Actions from the <a href="https://github.com/onflow/FlowActions" target="_blank" rel="noopener noreferrer">FlowActions repository</a> on GitHub. Each action is a composable DeFi primitive that can be used to build sophisticated financial workflows.</p>
             </div>
         </section>
 
@@ -51,12 +44,28 @@
                         <span>Loading actions from GitHub...</span>
                     </div>
                 </div>
+                <div class="filters-container" id="filters-container" style="display: none;">
+                    <div class="filters-header">
+                        <span class="filters-label">Filter by tag:</span>
+                        <button class="filter-clear" id="clear-filters">Clear all</button>
+                    </div>
+                    <div class="filters-list" id="filters-list">
+                        <!-- Filter buttons will be dynamically inserted here -->
+                    </div>
+                </div>
                 <div class="actions-grid" id="actions-grid">
                     <!-- Actions will be dynamically inserted here -->
                 </div>
                 <div class="error-message" id="error-message" style="display: none;">
                     <p>Failed to load actions. Please try refreshing the page.</p>
                 </div>
+            </div>
+        </section>
+
+        <section class="how-it-works">
+            <div class="container">
+                <h3>How does this work?</h3>
+                <p>This marketplace automatically fetches the latest Flow Actions from the <a href="https://github.com/onflow/FlowActions" target="_blank" rel="noopener noreferrer">FlowActions repository</a> on GitHub. Each action is a composable DeFi primitive that can be used to build sophisticated financial workflows.</p>
             </div>
         </section>
 

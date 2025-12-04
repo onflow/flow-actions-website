@@ -522,8 +522,19 @@ async function renderActions() {
             return (a.metadata?.title || a.name).localeCompare(b.metadata?.title || b.name);
         });
         
+        // Collect all unique action types for filtering (only the types shown in top-right badge)
+        const allActionTypes = new Set();
+        connectors.forEach(connector => {
+            const metadata = connector.metadata || {};
+            const type = ACTION_TYPE_MAP[metadata.type] || metadata.type || 'Connector';
+            allActionTypes.add(type);
+        });
+        
+        // Render filter buttons (only action types)
+        renderFilters(Array.from(allActionTypes).sort());
+        
         // Render action cards
-        grid.innerHTML = connectors.map(connector => {
+        grid.innerHTML = connectors.map((connector, index) => {
             const metadata = connector.metadata || {};
             const title = metadata.title || formatTitle(connector.name);
             let description = metadata.description || `Flow Action connector for ${title}`;
@@ -535,8 +546,11 @@ async function renderActions() {
             const category = metadata.category || 'General';
             const tags = [...new Set([category, ...(metadata.tags || [])])];
             
+            // Create data attribute with only the action type for filtering (matches top-right badge)
+            const dataTags = escapeHtml(type);
+            
             return `
-                <div class="action-card" onclick="window.open('${connector.url}', '_blank')">
+                <div class="action-card" data-tags="${dataTags}" onclick="window.open('${connector.url}', '_blank')">
                     <div class="action-card-header">
                         <div class="action-title-wrapper">
                             <div class="action-title">${escapeHtml(title)}</div>
@@ -559,6 +573,9 @@ async function renderActions() {
             `;
         }).join('');
         
+        // Initialize filter functionality
+        initializeFilters();
+        
     } catch (error) {
         console.error('Error rendering actions:', error);
         loading.style.display = 'none';
@@ -574,6 +591,97 @@ function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
+}
+
+/**
+ * Render filter buttons
+ */
+function renderFilters(tags) {
+    const filtersContainer = document.getElementById('filters-container');
+    const filtersList = document.getElementById('filters-list');
+    
+    if (tags.length === 0) {
+        filtersContainer.style.display = 'none';
+        return;
+    }
+    
+    filtersContainer.style.display = 'block';
+    filtersList.innerHTML = tags.map(tag => `
+        <button class="filter-btn" data-tag="${escapeHtml(tag)}" aria-label="Filter by ${escapeHtml(tag)}">
+            ${escapeHtml(tag)}
+        </button>
+    `).join('');
+}
+
+/**
+ * Initialize filter functionality
+ */
+function initializeFilters() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const clearButton = document.getElementById('clear-filters');
+    const actionCards = document.querySelectorAll('.action-card');
+    let activeFilters = new Set();
+    
+    // Filter button click handler
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const tag = button.getAttribute('data-tag');
+            
+            if (activeFilters.has(tag)) {
+                activeFilters.delete(tag);
+                button.classList.remove('active');
+            } else {
+                activeFilters.add(tag);
+                button.classList.add('active');
+            }
+            
+            applyFilters(activeFilters, actionCards);
+        });
+    });
+    
+    // Clear filters button
+    clearButton.addEventListener('click', () => {
+        activeFilters.clear();
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        applyFilters(activeFilters, actionCards);
+    });
+}
+
+/**
+ * Apply filters to action cards
+ */
+function applyFilters(activeFilters, actionCards) {
+    if (activeFilters.size === 0) {
+        // Show all cards if no filters are active
+        actionCards.forEach(card => {
+            card.style.display = '';
+        });
+    } else {
+        // Show only cards that match the active filter (data-tags now contains only the action type)
+        actionCards.forEach(card => {
+            const cardActionType = card.getAttribute('data-tags');
+            const hasMatchingType = activeFilters.has(cardActionType);
+            card.style.display = hasMatchingType ? '' : 'none';
+        });
+    }
+    
+    // Update results count
+    const visibleCount = Array.from(actionCards).filter(card => 
+        card.style.display !== 'none'
+    ).length;
+    updateResultsCount(visibleCount, actionCards.length);
+}
+
+/**
+ * Update results count display
+ */
+function updateResultsCount(visible, total) {
+    const marketplaceHeader = document.querySelector('.marketplace-header h3');
+    if (visible === total) {
+        marketplaceHeader.textContent = 'Available Actions';
+    } else {
+        marketplaceHeader.textContent = `Available Actions (${visible} of ${total})`;
+    }
 }
 
 // Initialize on page load
