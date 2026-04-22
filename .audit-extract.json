@@ -1,0 +1,34 @@
+{
+  "repo": "flow-actions-website",
+  "description": "Flow Actions website. Docs and demos for composable DeFi primitives on the Flow network (Sources, Sinks, Swappers, PriceOracles, Flashers)",
+  "topics": [
+    "flow",
+    "flow-actions",
+    "defi",
+    "composable-defi",
+    "forte",
+    "website",
+    "documentation",
+    "javascript",
+    "cadence",
+    "web3",
+    "smart-contracts",
+    "automation"
+  ],
+  "h1_suggestion": "# flow-actions-website \u2014 Flow Actions Documentation and Demo Site",
+  "homepage_url": null,
+  "deprecated_urls": [
+    "docs.onflow.org"
+  ],
+  "brand_voice_fixes": [
+    {
+      "find": "Flow blockchain",
+      "replace": "the Flow network"
+    },
+    {
+      "find": "Flow's",
+      "replace": "of Flow"
+    }
+  ],
+  "audit_file": "flow-actions-website-audit-2026-04-20.md"
+}

@@ -1,10 +1,10 @@
-# Flow Actions Marketplace
+# flow-actions-website — Flow Actions Documentation and Demo Site
 
 **A comprehensive directory for discovering and browsing Flow Actions from the [FlowActions repository](https://github.com/onflow/FlowActions)**
 
 ## Overview
 
-Flow Actions Marketplace is a modern web application that provides an automatically updated directory of Flow Actions—composable DeFi primitives for building sophisticated financial workflows on the Flow blockchain.
+Flow Actions Marketplace is a modern web application that provides an automatically updated directory of Flow Actions—composable DeFi primitives for building sophisticated financial workflows on the Flow network.
 
 The marketplace dynamically fetches the latest actions from the FlowActions GitHub repository, extracts meaningful metadata from Cadence smart contracts, and presents them in an intuitive, filterable interface. Each action is displayed with human-friendly titles, descriptions, action types, and tags, making it easy for developers to discover and explore available DeFi connectors.
 
@@ -33,7 +33,7 @@ Interactive tag-based filtering allows users to quickly find actions by:
 
 ### Modern UI/UX
 
-- **Flow.com Design Language**: Matches Flow's official branding and visual identity
+- **Flow.com Design Language**: Matches Flow official branding and visual identity
 - **Responsive Design**: Works seamlessly on desktop and mobile devices
 - **Fast Performance**: Optimized for quick loading and smooth interactions
 - **Accessible**: Built with accessibility best practices
@@ -201,5 +201,13 @@ This project is open source and available for use.
 ## Resources
 
 - **FlowActions Repository**: [https://github.com/onflow/FlowActions](https://github.com/onflow/FlowActions)
-- **Flow Documentation**: [https://docs.onflow.org](https://docs.onflow.org)
+- **Flow Documentation**: [https://developers.flow.com](https://developers.flow.com)
 - **Flow.com**: [https://flow.com](https://flow.com)
+## About Flow
+
+This repo is part of the [Flow network](https://flow.com), a Layer 1 blockchain built for consumer applications, AI agents, and DeFi at scale.
+
+- Developer docs: https://developers.flow.com
+- Cadence language: https://cadence-lang.org
+- Community: [Flow Discord](https://discord.gg/flow) · [Flow Forum](https://forum.flow.com)
+- Governance: [Flow Improvement Proposals](https://github.com/onflow/flips)
