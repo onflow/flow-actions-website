@@ -1,4 +1,4 @@
-# flow-actions-website — Flow Actions Documentation and Demo Site
+# flow-actions-website — Flow Actions Marketplace
 
 **A comprehensive directory for discovering and browsing Flow Actions from the [FlowActions repository](https://github.com/onflow/FlowActions)**
 
@@ -51,7 +51,7 @@ Interactive tag-based filtering allows users to quickly find actions by:
 
    ```bash
    git clone <repository-url>
-   cd actions
+   cd flow-actions-website
    ```
 
 2. **Serve the files using a local web server**
@@ -127,7 +127,7 @@ Actions are presented in a responsive grid with:
 ## File Structure
 
 ```
-actions/
+flow-actions-website/
 ├── index.html          # Main HTML structure
 ├── styles.css          # Styling and layout (Flow.com design system)
 ├── app.js              # JavaScript for fetching, parsing, and displaying actions
@@ -203,6 +203,7 @@ This project is open source and available for use.
 - **FlowActions Repository**: [https://github.com/onflow/FlowActions](https://github.com/onflow/FlowActions)
 - **Flow Documentation**: [https://developers.flow.com](https://developers.flow.com)
 - **Flow.com**: [https://flow.com](https://flow.com)
+
 ## About Flow
 
 This repo is part of the [Flow network](https://flow.com), a Layer 1 blockchain built for consumer applications, AI agents, and DeFi at scale.
